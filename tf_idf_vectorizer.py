@@ -7,9 +7,9 @@ class TfidfVectorizer(CountVectorizer):
 
     def __init__(self):
 
-        # так как наследуемся, то необязательно инициализировать CountVectorizer
         self.tfidf_transformer = TfidfTransformer()
 
+        # так как наследуемся, то необязательно инициализировать CountVectorizer
         super().__init__()
 
     def fit_transform(self, corpus):
