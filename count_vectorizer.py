@@ -1,10 +1,6 @@
-#%% md
-# ## TF - IDF
-#%%
 import math
-#%% md
-# ### Задание 1 - count vectorizer
-#%%
+
+# Задание 1 - count vectorizer
 class CountVectorizer:
     def __init__(self, word_count=None):
         self.word_count = word_count
@@ -61,21 +57,21 @@ class CountVectorizer:
         self.fit(corpus)
 
         return self.transform(corpus)
-#%%
-vectorizer = CountVectorizer()
-#%%
-corpus = [
-    'Crock Pot Pasta Never boil pasta again',
-    'Pasta Pomodoro Fresh ingredients Parmesan to taste'
-]
-#%%
-count_matrix = vectorizer.fit_transform(corpus)
-print(count_matrix)
-#%%
-print(vectorizer.get_feature_names())
-#%% md
-# ### Задание 2 - term frequency
-#%%
+
+if __name__ == '__main__':
+    vectorizer = CountVectorizer()
+
+    corpus = [
+        'Crock Pot Pasta Never boil pasta again',
+        'Pasta Pomodoro Fresh ingredients Parmesan to taste'
+    ]
+
+    count_matrix = vectorizer.fit_transform(corpus)
+    print(count_matrix)
+
+    print(vectorizer.get_feature_names())
+
+# Задание 2 - term frequency
 def tf_transform(count_matrix):
     word_freq = []
     for sentence in count_matrix:
@@ -90,17 +86,17 @@ def tf_transform(count_matrix):
         word_freq.append(sentence_word_freq)
 
     return word_freq
-#%%
-count_matrix = [
-    [1, 1, 2, 1, 1, 1, 0, 0, 0, 0, 0, 0],
-    [0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1]
-]
-#%%
-tf_matrix = tf_transform(count_matrix)
-print(tf_matrix)
-#%% md
-# ### Задание 3 - inverse document-frequency
-#%%
+
+if __name__ == '__main__':
+    count_matrix = [
+        [1, 1, 2, 1, 1, 1, 0, 0, 0, 0, 0, 0],
+        [0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1]
+    ]
+
+    tf_matrix = tf_transform(count_matrix)
+    print(tf_matrix)
+
+# Задание 3 - inverse document-frequency
 def step_function(number):
     return 1 if number >= 1 else 0
 
@@ -119,11 +115,12 @@ def idf_transform(count_matrix):
         column_sum.append(element_idf)
 
     return column_sum
-#%%
-count_matrix = [
-    [1, 1, 2, 1, 1, 1, 0, 0, 0, 0, 0, 0],
-    [0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1]
-]
-#%%
-idf_matrix = idf_transform(count_matrix)
-print(idf_matrix)
+
+if __name__ == '__main__':
+    count_matrix = [
+        [1, 1, 2, 1, 1, 1, 0, 0, 0, 0, 0, 0],
+        [0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1]
+    ]
+
+    idf_matrix = idf_transform(count_matrix)
+    print(idf_matrix)

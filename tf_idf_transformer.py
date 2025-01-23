@@ -1,11 +1,9 @@
-#%% md
-# ### Задание 4 - tf-idf transformer
-#%%
 import math
-#%%
+
 def step_function(number):
     return 1 if number >= 1 else 0
-#%%
+
+# Задание 4 - tf-idf transformer
 class TfidfTransformer:
 
     @staticmethod
@@ -42,7 +40,7 @@ class TfidfTransformer:
 
     @staticmethod
     def fit_transform(count_matrix):
-        # вызов через имя класса
+
         tf_transform_result = TfidfTransformer.tf_transform(count_matrix)
         idf_transform_result = TfidfTransformer.idf_transform(count_matrix)
 
@@ -56,10 +54,11 @@ class TfidfTransformer:
                 result[n].append(result_item)
 
         return result
-#%%
-count_matrix = [
-[1, 1, 2, 1, 1, 1, 0, 0, 0, 0, 0, 0],
-[0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1]]
-#%%
-tfidf_matrix = TfidfTransformer.fit_transform(count_matrix)
-print(tfidf_matrix)
+
+if __name__ == '__main__':
+    count_matrix = [
+    [1, 1, 2, 1, 1, 1, 0, 0, 0, 0, 0, 0],
+    [0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1]]
+
+    tfidf_matrix = TfidfTransformer.fit_transform(count_matrix)
+    print(tfidf_matrix)
