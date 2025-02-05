@@ -1,10 +1,11 @@
 import math
 
-def step_function(number):
-    return 1 if number >= 1 else 0
-
 # Задание 4 - tf-idf transformer
 class TfidfTransformer:
+
+    @staticmethod
+    def step_function(number):
+        return 1 if number >= 1 else 0
 
     @staticmethod
     def tf_transform(count_matrix):
@@ -31,7 +32,7 @@ class TfidfTransformer:
             element_sum = 0
 
             for i in range(doc_amount):
-                element_sum += step_function(count_matrix[i][j])
+                element_sum += TfidfTransformer.step_function(count_matrix[i][j])
 
             element_idf = round(math.log((doc_amount + 1) / (element_sum + 1)) + 1, 3)
             column_sum.append(element_idf)

@@ -2,8 +2,8 @@ import math
 
 # Задание 1 - count vectorizer
 class CountVectorizer:
-    def __init__(self, word_count=None):
-        self.word_count = word_count
+    def __init__(self):
+        self.word_count = {}
 
     def fit(self, corpus):
         self.word_count = {}
@@ -49,6 +49,9 @@ class CountVectorizer:
         return count_matrix
 
     def get_feature_names(self):
+        if self.word_count is None:
+            raise ValueError("сначала fit(), потом get_feature_names()")
+
         word_order = list(self.word_count.keys())
 
         return word_order
@@ -57,19 +60,6 @@ class CountVectorizer:
         self.fit(corpus)
 
         return self.transform(corpus)
-
-if __name__ == '__main__':
-    vectorizer = CountVectorizer()
-
-    corpus = [
-        'Crock Pot Pasta Never boil pasta again',
-        'Pasta Pomodoro Fresh ingredients Parmesan to taste'
-    ]
-
-    count_matrix = vectorizer.fit_transform(corpus)
-    print(count_matrix)
-
-    print(vectorizer.get_feature_names())
 
 # Задание 2 - term frequency
 def tf_transform(count_matrix):
@@ -86,15 +76,6 @@ def tf_transform(count_matrix):
         word_freq.append(sentence_word_freq)
 
     return word_freq
-
-if __name__ == '__main__':
-    count_matrix = [
-        [1, 1, 2, 1, 1, 1, 0, 0, 0, 0, 0, 0],
-        [0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1]
-    ]
-
-    tf_matrix = tf_transform(count_matrix)
-    print(tf_matrix)
 
 # Задание 3 - inverse document-frequency
 def step_function(number):
@@ -117,10 +98,24 @@ def idf_transform(count_matrix):
     return column_sum
 
 if __name__ == '__main__':
-    count_matrix = [
-        [1, 1, 2, 1, 1, 1, 0, 0, 0, 0, 0, 0],
-        [0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1]
+    # сначала CountVectorizer
+    vectorizer = CountVectorizer()
+
+    corpus = [
+        'Crock Pot Pasta Never boil pasta again',
+        'Pasta Pomodoro Fresh ingredients Parmesan to taste'
     ]
+
+    count_matrix = vectorizer.fit_transform(corpus)
+    print(count_matrix)
+
+    print(vectorizer.get_feature_names())
+
+    # теперь TF-трансформация
+    tf_matrix = tf_transform(count_matrix)
+    print(tf_matrix)
+
+    # финально IDF-трансформация
 
     idf_matrix = idf_transform(count_matrix)
     print(idf_matrix)
