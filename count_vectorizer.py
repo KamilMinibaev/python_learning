@@ -1,4 +1,6 @@
 import math
+from typing import List, Tuple, Optional
+# например, optional[int] выдает int или none
 
 # Задание 1 - count vectorizer
 class CountVectorizer:
@@ -21,7 +23,7 @@ class CountVectorizer:
 
         return self.word_count
 
-    def transform(self, corpus):
+    def transform(self, corpus:list[str]) -> list[list[int]]:
         count_matrix = []
 
         for sentence in corpus:
@@ -48,9 +50,7 @@ class CountVectorizer:
 
         return count_matrix
 
-    def get_feature_names(self):
-        if self.word_count is None:
-            raise ValueError("сначала fit(), потом get_feature_names()")
+    def get_feature_names(self) -> Optional[List[str]]:
 
         word_order = list(self.word_count.keys())
 
