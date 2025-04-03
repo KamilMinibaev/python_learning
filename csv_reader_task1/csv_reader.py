@@ -1,5 +1,4 @@
 import csv
-# !!! - from typing import Union
 
 MENU_TEXT = '''
 Меню:
@@ -73,10 +72,9 @@ def count_stats(data) -> {}:
         departments[department]['count'] += 1
         departments[department]['sum_salary'] += salary
 
-        # Обновляем минимальную зарплату
         if salary < departments[department]['min_salary']:
             departments[department]['min_salary'] = salary
-        # Обновляем максимальную зарплату
+
         if salary > departments[department]['max_salary']:
             departments[department]['max_salary'] = salary
 
@@ -158,18 +156,18 @@ def menu():
 
         choice = input("Введите номер пункта: ")
 
-        if choice == '1':
-            team_hierarchy(filename)
-        elif choice == '2':
-            dept_summary(filename)
-        elif choice == '3':
-            save_summary(filename)
-        elif choice == '0':
-            print("Выходим)")
-            break
-        else:
-            print("Такую функцию еще не придумали, попробуйте снова")
-
+        match choice:
+            case '1':
+                team_hierarchy(filename)
+            case '2':
+                dept_summary(filename)
+            case '3':
+                save_summary(filename)
+            case '0':
+                print("Выходим)")
+                break
+            case _:
+                print("Такую функцию еще не придумали, попробуйте снова")
 
 
 if __name__ == '__main__':
