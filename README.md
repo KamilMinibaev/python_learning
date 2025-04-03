@@ -9,7 +9,7 @@
 
 ## 🚀 Прогресс
 
-![&#8203;:contentReference[oaicite:7]{index=7}](https://github-readme-stats.vercel.app/api?username=ваш_никнейм&show_icons=true&theme=radical)&#8203;:contentReference[oaicite:8]{index=8}
+![Статистика GitHub](https://github-readme-stats.vercel.app/api?username=KamilMinibaev&show_icons=true&theme=radical)
 
 ## 🤝 Контакты
 
