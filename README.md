@@ -3,4 +3,4 @@
 ## Ссылки
 
 - GitHub: [KamilMinibaev](https://github.com/KamilMinibaev)
-- LeetCode: [LeetCode]([https://leetcode.com/](https://leetcode.com/u/kamil_minibaev/))
+- LeetCode: [LeetCode](https://leetcode.com/u/kamil_minibaev/)
