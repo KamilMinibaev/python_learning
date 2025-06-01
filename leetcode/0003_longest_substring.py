@@ -8,16 +8,19 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
-        unique_symbols = set()  # множество текущих уникальных символов
+
+        # множество текущих уникальных символов
+        unique_symbols = set()
         max_length = 0
-        left = 0                # начало окна
+        # начало окна
+        left = 0
 
         for symbol in range(len(s)):
             while s[symbol] in unique_symbols:
-                unique_symbols.remove(s[left])  # убираем символ слева
-                left += 1                      # сдвигаем левую границу
+                unique_symbols.remove(s[left])
+                left += 1
 
-            unique_symbols.add(s[symbol])       # добавляем новый символ
+            unique_symbols.add(s[symbol])
             max_length = max(max_length, symbol - left + 1)
 
         return max_length
