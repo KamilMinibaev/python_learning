@@ -27,3 +27,9 @@ class Solution(object):
             current = current.right
 
         return result
+
+        # # через рекурсию
+        # if root is None:
+        #     return []
+        #
+        # return (self.inorderTraversal(root.left) + [root.val] + self.inorderTraversal(root.right))

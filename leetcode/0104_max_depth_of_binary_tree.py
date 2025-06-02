@@ -29,3 +29,6 @@ class Solution(object):
                 stack.append((node.right, depth + 1))
 
         return max_depth
+
+        # # через рекурсию
+        # return max(self.maxDepth(root.left), self.maxDepth(root.right)) + 1
