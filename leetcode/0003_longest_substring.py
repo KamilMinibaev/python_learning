@@ -10,23 +10,28 @@ class Solution(object):
         """
 
         # множество текущих уникальных символов
-        unique_symbols = set()
-        max_length = 0
+        substring = ''            #set()  тут с порядком может быть трабла, строка нагляднее
+
         # начало окна
-        left = 0
+        max_lenght = 0
 
-        for symbol in range(len(s)):
-            while s[symbol] in unique_symbols:
-                unique_symbols.remove(s[left])
-                left += 1
+        i = 0
 
-            unique_symbols.add(s[symbol])
-            max_length = max(max_length, symbol - left + 1)
+        while i < len(s):
 
-        return max_length
+            if s[i] in substring:
+                substring = substring[1:]
+
+            else:
+                substring += s[i]
+                max_lenght = max(len(substring), max_lenght)
+
+                i += 1
+
+        return max_lenght
 
 
 if __name__ == '__main__':
     s = Solution()
-    x = "abcabcbb"
+    x = "bacda"
     print(s.lengthOfLongestSubstring(x))

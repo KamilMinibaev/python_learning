@@ -12,23 +12,23 @@ class Solution(object):
         :rtype: int
         """
 
-        # находим глубину левой и правой ветви, берем макс из них
-        if not root:
-            return 0
+        # # находим глубину левой и правой ветви, берем макс из них
+        # if not root:
+        #     return 0
+        #
+        # # записываю узел и глубину
+        # stack = [(root, 1)]
+        # max_depth = 0
+        #
+        # # пока есть куда идти
+        # while stack:
+        #     node, depth = stack.pop()
+        #     if node:
+        #         max_depth = max(max_depth, depth)
+        #         stack.append((node.left, depth + 1))
+        #         stack.append((node.right, depth + 1))
+        #
+        # return max_depth
 
-        # записываю узел и глубину
-        stack = [(root, 1)]
-        max_depth = 0
-
-        # пока есть куда идти
-        while stack:
-            node, depth = stack.pop()
-            if node:
-                max_depth = max(max_depth, depth)
-                stack.append((node.left, depth + 1))
-                stack.append((node.right, depth + 1))
-
-        return max_depth
-
-        # # через рекурсию
-        # return max(self.maxDepth(root.left), self.maxDepth(root.right)) + 1
+        # через рекурсию
+        return max(self.maxDepth(root.left), self.maxDepth(root.right)) + 1
